@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn" style="cursor:pointer" (click)="goBack()">Back</button>
+    </div>
+    <div class="col-md-12">
+      <h1 class="heading" align="center">Meetings Scheduled for Room {{room}}</h1>
+      <table class="table table-bordered" id="newTable">
+        <tr>
+          <th><b>AGENDA</b></th>
+          <th><b>BOOKED BY</b></th>
+          <th><b>DATE</b></th>
+          <th><b>FROM</b></th>
+          <th><b>TO</b></th>
+          <th><b>ACTION</b></th>
+        </tr>
+        <tr class="text-center" *ngFor="let meeting of meetings">
+          <td><b>{{meeting.agenda}}</b></td>
+          <td><b>{{meeting.username}}</b></td>
+          <td><b>{{meeting.date}}</b></td>
+          <td><b>{{meeting.startTime}}</b></td>
+          <td><b>{{meeting.endTime}}</b></td>
+          <td>
+            <button class="btn btn-black" style="cursor:pointer" (click)="deleteMeeting(room)">Delete Meeting</button>
+          </td>
+        </tr>
+        <tr *ngIf="meetings.length === 0">
+          <td colspan="6">No records found to display</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

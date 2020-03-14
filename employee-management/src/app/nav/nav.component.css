@@ -1,0 +1,52 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+  color: black;
+}
+
+li a.active {
+  background-color: #3fc5b9;
+  color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+.pull-left {
+  float: left;
+}
+
+.heading {
+  margin-left: 20px;
+  color: #333;
+}

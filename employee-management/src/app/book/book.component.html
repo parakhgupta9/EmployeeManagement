@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn" style="cursor:pointer" (click)="goBack()">Back</button>
+    </div>
+  </div>
+  <div class="row" style="width: 50%;margin: 0 auto;">
+    <div class="col-md-12">
+      <h1 class="heading" align="center">Book a meeting room</h1>
+      <div #formDiv>
+        <form [formGroup]="bookingForm">
+          <div class="row base-margin-bottom">
+            <div class="col-md-12">
+              <label class="form-labels">USERNAME</label>
+              <input type="text" formControlName="username">
+            </div>
+          </div>
+          <div class="row base-margin-bottom">
+            <div class="col-md-12">
+              <label class="form-labels">ROOM</label>
+              <select formControlName="room">
+                <option>SELECT ROOMS</option>
+                <option *ngFor="let room of rooms" [value]="room">{{room}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row base-margin-bottom">
+            <div class="col-md-12">
+              <label class="form-labels">DATE</label>
+              <input type="date" id="date1" min="todaysDate" formControlName="date" (change)="checkDate()">
+            </div>
+          </div>
+          <div class="row base-margin-bottom">
+            <div class="col-md-12">
+              <label class="form-labels">START TIME</label>
+              <input type="time" formControlName="startTime" (change)="checkTime()">
+            </div>
+          </div>
+          <div class="row base-margin-bottom">
+            <div class="col-md-12">
+              <label class="form-labels">END TIME</label>
+              <input type="time" formControlName="endTime" (change)="checkTime()">
+            </div>
+          </div>
+          <div class="row base-margin-bottom">
+            <div class="col-md-12">
+              <label class="form-labels">AGENDA</label>
+              <textarea name="message" formControlName="agenda"></textarea>
+            </div>
+          </div>
+          <div class="half-margin-bottom" *ngIf="!startFlag || !endFlag" align="center">
+            <div style="color: red">Meeting Room can be booked from 9am to 6pm only.</div>
+          </div>
+          <div class="half-margin-bottom" *ngIf="!totalValidation" align="center">
+            <div style="color: red">Duration of the meeting should be minimum 30 minutes</div>
+          </div>
+          <div class="row base-margin-bottom" align="center">
+            <div class="col-md-12">
+              <button type="button" style="cursor:pointer" class="btn" [disabled]="!bookingForm.valid || !startFlag || !endFlag || !totalValidation"
+                (click)="onSubmit()">Submit</button>
+              <button type="button" style="cursor:pointer" class="btn" (click)="onReset()">Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

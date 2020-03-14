@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let room of rooms">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="room">{{room}}</div>
+          </div>
+        </div>
+        <div class="row half-margin-top">
+          <div class="col-md-12" align="center">
+            <button class="btn btn-black" style="cursor:pointer" (click)="viewScheduled(room)">View Scheduled
+              Meetings</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row base-margin-top">
+    <div class="col-md-12" align="center">
+      <button class="btn" style="cursor:pointer" (click)="goToBook()">Book A Room</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row" style="margin: 0 auto;">
+    <div class="col-md-12">
+      <h1 class="heading" align="center">Select date and a time slot to check Room Status</h1>
+      <div #formDiv>
+        <form [formGroup]="statusForm">
+          <div class="row base-margin-bottom">
+            <div class="col-md-3">
+              <label class="form-labels">DATE</label>
+              <input type="date" id="date1" min="todaysDate" formControlName="date" (change)="checkDate()">
+            </div>
+            <div class="col-md-3">
+              <label class="form-labels">START TIME</label>
+              <input type="time" formControlName="startTime">
+            </div>
+            <div class="col-md-3">
+              <label class="form-labels">END TIME</label>
+              <input type="time" formControlName="endTime">
+            </div>
+            <div class="col-md-3">
+              <button type="button" style="cursor:pointer" class="btn"
+                [disabled]="!statusForm.valid" (click)="checkStatus()">Check Room Status</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="showStatusTable">
+    <div class="col-md-12">
+      <h1 class="heading" align="center">Booking Status</h1>
+      <table class="table table-bordered" id="newTable">
+        <tr>
+          <th><b>ROOM</b></th>
+          <th><b>AGENDA</b></th>
+          <th><b>BOOKED BY</b></th>
+          <th><b>DATE</b></th>
+          <th><b>FROM</b></th>
+          <th><b>TO</b></th>
+          <th><b>STATUS</b></th>
+        </tr>
+        <tr class="text-center" *ngFor="let meeting of roomStatusList">
+          <td><b>{{meeting.room}}</b></td>
+          <td><b>{{meeting.agenda}}</b></td>
+          <td><b>{{meeting.username}}</b></td>
+          <td><b>{{meeting.date}}</b></td>
+          <td><b>{{meeting.startTime}}</b></td>
+          <td><b>{{meeting.endTime}}</b></td>
+          <td><b>{{meeting.status}}</b></td>
+        </tr>
+        <tr *ngIf="meetings.length === 0">
+          <td colspan="6">No records found to display</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
